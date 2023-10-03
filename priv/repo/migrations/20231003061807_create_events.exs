@@ -10,8 +10,11 @@ defmodule TicketingSystem.Repo.Migrations.CreateEvents do
       add :status, :string
       add :time_starting, :time
       add :time_ending, :time
+      add :user_id, :integer
 
       timestamps()
     end
+
+    create index(:events, [:user_id])
   end
 end

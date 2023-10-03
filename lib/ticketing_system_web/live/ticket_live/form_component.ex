@@ -41,7 +41,11 @@ defmodule TicketingSystemWeb.TicketLive.FormComponent do
   end
 
   defp save_ticket(socket, :new, ticket_params) do
-    case Tickets.create_ticket(ticket_params) do
+    new_params =
+      ticket_params
+      |> Map.put("user_id", socket.assigns.user.id)
+
+    case Tickets.create_ticket(new_params) do
       {:ok, _ticket} ->
         {:noreply,
          socket

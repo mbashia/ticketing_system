@@ -3,10 +3,16 @@ defmodule TicketingSystemWeb.TicketLive.Index do
 
   alias TicketingSystem.Tickets
   alias TicketingSystem.Tickets.Ticket
+  alias TicketingSystem.Accounts
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :tickets, list_tickets())}
+  def mount(_params, session, socket) do
+    user = Accounts.get_user_by_session_token(session["user_token"])
+
+    {:ok,
+     socket
+     |> assign(:tickets, list_tickets())}
+    |> assign(:user, user)
   end
 
   @impl true

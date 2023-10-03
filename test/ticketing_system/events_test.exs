@@ -8,7 +8,15 @@ defmodule TicketingSystem.EventsTest do
 
     import TicketingSystem.EventsFixtures
 
-    @invalid_attrs %{date: nil, description: nil, name: nil, status: nil, time_ending: nil, time_starting: nil, venue: nil}
+    @invalid_attrs %{
+      date: nil,
+      description: nil,
+      name: nil,
+      status: nil,
+      time_ending: nil,
+      time_starting: nil,
+      venue: nil
+    }
 
     test "list_events/0 returns all events" do
       event = event_fixture()
@@ -21,7 +29,15 @@ defmodule TicketingSystem.EventsTest do
     end
 
     test "create_event/1 with valid data creates a event" do
-      valid_attrs = %{date: ~D[2023-10-02], description: "some description", name: "some name", status: "some status", time_ending: ~T[14:00:00], time_starting: ~T[14:00:00], venue: "some venue"}
+      valid_attrs = %{
+        date: ~D[2023-10-02],
+        description: "some description",
+        name: "some name",
+        status: "some status",
+        time_ending: ~T[14:00:00],
+        time_starting: ~T[14:00:00],
+        venue: "some venue"
+      }
 
       assert {:ok, %Event{} = event} = Events.create_event(valid_attrs)
       assert event.date == ~D[2023-10-02]
@@ -39,7 +55,16 @@ defmodule TicketingSystem.EventsTest do
 
     test "update_event/2 with valid data updates the event" do
       event = event_fixture()
-      update_attrs = %{date: ~D[2023-10-03], description: "some updated description", name: "some updated name", status: "some updated status", time_ending: ~T[15:01:01], time_starting: ~T[15:01:01], venue: "some updated venue"}
+
+      update_attrs = %{
+        date: ~D[2023-10-03],
+        description: "some updated description",
+        name: "some updated name",
+        status: "some updated status",
+        time_ending: ~T[15:01:01],
+        time_starting: ~T[15:01:01],
+        venue: "some updated venue"
+      }
 
       assert {:ok, %Event{} = event} = Events.update_event(event, update_attrs)
       assert event.date == ~D[2023-10-03]

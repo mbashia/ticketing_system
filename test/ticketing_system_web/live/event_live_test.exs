@@ -4,9 +4,33 @@ defmodule TicketingSystemWeb.EventLiveTest do
   import Phoenix.LiveViewTest
   import TicketingSystem.EventsFixtures
 
-  @create_attrs %{date: %{day: 2, month: 10, year: 2023}, description: "some description", name: "some name", status: "some status", time_ending: %{hour: 14, minute: 0}, time_starting: %{hour: 14, minute: 0}, venue: "some venue"}
-  @update_attrs %{date: %{day: 3, month: 10, year: 2023}, description: "some updated description", name: "some updated name", status: "some updated status", time_ending: %{hour: 15, minute: 1}, time_starting: %{hour: 15, minute: 1}, venue: "some updated venue"}
-  @invalid_attrs %{date: %{day: 30, month: 2, year: 2023}, description: nil, name: nil, status: nil, time_ending: %{hour: 14, minute: 0}, time_starting: %{hour: 14, minute: 0}, venue: nil}
+  @create_attrs %{
+    date: %{day: 2, month: 10, year: 2023},
+    description: "some description",
+    name: "some name",
+    status: "some status",
+    time_ending: %{hour: 14, minute: 0},
+    time_starting: %{hour: 14, minute: 0},
+    venue: "some venue"
+  }
+  @update_attrs %{
+    date: %{day: 3, month: 10, year: 2023},
+    description: "some updated description",
+    name: "some updated name",
+    status: "some updated status",
+    time_ending: %{hour: 15, minute: 1},
+    time_starting: %{hour: 15, minute: 1},
+    venue: "some updated venue"
+  }
+  @invalid_attrs %{
+    date: %{day: 30, month: 2, year: 2023},
+    description: nil,
+    name: nil,
+    status: nil,
+    time_ending: %{hour: 14, minute: 0},
+    time_starting: %{hour: 14, minute: 0},
+    venue: nil
+  }
 
   defp create_event(_) do
     event = event_fixture()

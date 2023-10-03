@@ -6,8 +6,11 @@ defmodule TicketingSystem.Repo.Migrations.CreateTickets do
       add :type, :string
       add :quantity, :integer
       add :status, :string
+      add :user_id, :integer
 
       timestamps()
     end
+
+    create index(:tickets, [:user_id])
   end
 end

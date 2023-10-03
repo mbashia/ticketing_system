@@ -87,8 +87,6 @@ defmodule TicketingSystemWeb.Router do
     live "/tickets/:id", TicketLive.Show, :show
     live "/tickets/:id/show/edit", TicketLive.Show, :edit
 
-
-
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email

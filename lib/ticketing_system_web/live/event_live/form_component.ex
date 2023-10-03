@@ -41,7 +41,11 @@ defmodule TicketingSystemWeb.EventLive.FormComponent do
   end
 
   defp save_event(socket, :new, event_params) do
-    case Events.create_event(event_params) do
+    new_params =
+      event_params
+      |> Map.put("user_id", socket.assigns.user.id)
+
+    case Events.create_event(new_params) do
       {:ok, _event} ->
         {:noreply,
          socket
