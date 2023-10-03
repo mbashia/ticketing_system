@@ -1,0 +1,36 @@
+<h1>Show Ticket</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.ticket_show_path(@socket, :show, @ticket)}>
+    <.live_component
+      module={TicketingSystemWeb.TicketLive.FormComponent}
+      id={@ticket.id}
+      title={@page_title}
+      action={@live_action}
+      ticket={@ticket}
+      return_to={Routes.ticket_show_path(@socket, :show, @ticket)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @ticket.type %>
+  </li>
+
+  <li>
+    <strong>Quantity:</strong>
+    <%= @ticket.quantity %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @ticket.status %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.ticket_show_path(@socket, :edit, @ticket), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.ticket_index_path(@socket, :index) %></span>
