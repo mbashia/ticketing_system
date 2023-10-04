@@ -12,6 +12,20 @@
     />
   </.modal>
 <% end %>
+<%= if @live_action in [:getticket] do %>
+  <.modal  return_to={Routes.event_show_path(@socket, :show, @event)}>
+    <.live_component
+      module={TicketingSystemWeb.EventLive.TicketComponent}
+      id={@event.id || :new}
+      title={@page_title}
+      action={@live_action}
+      changeset = {@ticket_changeset}
+      event = {@event}
+      
+       return_to={Routes.event_show_path(@socket, :show, @event)}
+    />
+  </.modal>
+<% end %>
 
 <ul>
 
@@ -53,4 +67,5 @@
 </ul>
 
 <span><%= live_patch "Edit", to: Routes.event_show_path(@socket, :edit, @event), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.event_index_path(@socket, :index) %></span>
+<span><%= live_redirect "Back", to: Routes.event_index_path(@socket, :index) %></span> |
+<span><%= live_redirect "get ticket", to: Routes.event_show_path(@socket,:getticket,@event), class: "button"%></span>

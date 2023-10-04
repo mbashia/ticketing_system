@@ -2,6 +2,7 @@ defmodule TicketingSystem.Events.Event do
   use Ecto.Schema
   import Ecto.Changeset
   alias TicketingSystem.Accounts.User
+  alias TicketingSystem.Tickets.Ticket
 
   schema "events" do
     field :date, :date
@@ -12,6 +13,7 @@ defmodule TicketingSystem.Events.Event do
     field :time_starting, :time
     field :venue, :string
     belongs_to :user, User, foreign_key: :user_id
+    has_many :tickets, Ticket
 
     timestamps()
   end

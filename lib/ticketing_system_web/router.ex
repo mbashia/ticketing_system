@@ -76,6 +76,7 @@ defmodule TicketingSystemWeb.Router do
     live "/events", EventLive.Index, :index
     live "/events/new", EventLive.Index, :new
     live "/events/:id/edit", EventLive.Index, :edit
+    live "/events/:id/ticket", EventLive.Show, :getticket
 
     live "/events/:id", EventLive.Show, :show
     live "/events/:id/show/edit", EventLive.Show, :edit

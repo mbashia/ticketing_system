@@ -7,7 +7,7 @@ defmodule TicketingSystem.Repo.Migrations.CreateTickets do
       add :quantity, :integer
       add :status, :string
       add :user_id, :integer
-
+      add :event_id, :integer
       timestamps()
     end
 

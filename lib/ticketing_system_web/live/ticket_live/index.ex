@@ -11,8 +11,8 @@ defmodule TicketingSystemWeb.TicketLive.Index do
 
     {:ok,
      socket
-     |> assign(:tickets, list_tickets())}
-    |> assign(:user, user)
+     |> assign(:tickets, list_tickets())
+     |> assign(:user, user)}
   end
 
   @impl true

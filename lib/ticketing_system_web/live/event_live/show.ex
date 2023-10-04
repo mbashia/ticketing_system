@@ -2,10 +2,16 @@ defmodule TicketingSystemWeb.EventLive.Show do
   use TicketingSystemWeb, :live_view
 
   alias TicketingSystem.Events
+  alias TicketingSystem.Tickets
 
+  alias TicketingSystem.Tickets.Ticket
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    changeset = Tickets.change_ticket(%Ticket{})
+
+    {:ok,
+     socket
+     |> assign(:ticket_changeset, changeset)}
   end
 
   @impl true
@@ -18,4 +24,5 @@ defmodule TicketingSystemWeb.EventLive.Show do
 
   defp page_title(:show), do: "Show Event"
   defp page_title(:edit), do: "Edit Event"
+  defp page_title(:getticket), do: "Get ticket"
 end
