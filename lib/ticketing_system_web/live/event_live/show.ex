@@ -11,7 +11,8 @@ defmodule TicketingSystemWeb.EventLive.Show do
 
     {:ok,
      socket
-     |> assign(:ticket_changeset, changeset)}
+     |> assign(:ticket_changeset, changeset)
+   }
   end
 
   @impl true

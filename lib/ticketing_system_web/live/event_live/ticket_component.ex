@@ -3,6 +3,7 @@ defmodule TicketingSystemWeb.EventLive.TicketComponent do
   alias TicketingSystem.Tickets
 
   def render(assigns) do
+    IO.inspect(assigns)
     ~H"""
     <div>
 
@@ -25,6 +26,9 @@ defmodule TicketingSystemWeb.EventLive.TicketComponent do
       <%= submit "Save", phx_disable_with: "Saving..." %>
     </div>
     </.form>
+    <p>
+    <%= @ticket_message%>
+    </p>
 
     </div>
     """
@@ -43,7 +47,8 @@ defmodule TicketingSystemWeb.EventLive.TicketComponent do
       {:ok, _ticket} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Ticket created successfully")}
+         |> put_flash(:info, "Ticket created successfully")
+        |>assign(:ticket_message, "visit  here to get you ticket")}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
